@@ -22,7 +22,7 @@ const (
 	envIgnoreFile    = "IGNORE_FILE"
 	envSyncToken     = "TOKEN"
 	envBaseNamespace = "BASE_NAMESPACE"
-	version          = "1.0.0"
+	version          = "1.0.1"
 	usage            = `
 雨雀文档同步脚本：
   命令：
@@ -74,6 +74,10 @@ func init() {
 	}
 
 	ignoreFilePath = path.Join(baseDir, ignoreFile)
+	
+	if token == "" {
+		log.Panic("缺少雨雀TOKEN")
+	}
 }
 
 func main() {
